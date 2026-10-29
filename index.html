@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caesar Cipher Encryption Tool</title>
+  <meta name="description" content="Encrypt and decrypt text with the Caesar cipher, locally in your browser.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <p class="tag">// Cyber Security Lab Experiment</p>
+      <h1>Caesar Cipher <span class="green">Encryption Tool</span></h1>
+      <p class="muted">All text is processed locally in your browser. Nothing is sent to a server.</p>
+    </header>
+
+    <section class="card glow" aria-label="Cipher tool">
+      <label for="inputText" class="label">&gt; input text</label>
+      <textarea id="inputText" rows="5" placeholder="Type plaintext or ciphertext..."></textarea>
+
+      <div class="samples">
+        <span class="muted">Samples:</span>
+        <button type="button" class="sample">Hello, World! 123</button>
+        <button type="button" class="sample">Attack at dawn.</button>
+        <button type="button" class="sample">Khoor, Zruog! 123</button>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="shiftKey" class="label">&gt; shift key (0–25)</label>
+          <input type="number" id="shiftKey" min="0" max="25" step="1" value="3">
+        </div>
+        <button id="encryptBtn" class="btn primary">Encrypt</button>
+        <button id="decryptBtn" class="btn outline">Decrypt</button>
+      </div>
+
+      <h2 class="label">&gt; result</h2>
+      <output id="result" aria-live="polite">Output will appear here.</output>
+      <div class="row">
+        <button id="copyBtn" class="btn secondary">Copy Result</button>
+        <button id="clearBtn" class="btn ghost">Clear</button>
+      </div>
+      <p id="status" role="status" class="muted"></p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2 class="green">How it works</h2>
+        <p class="muted">Each letter is shifted a fixed number of places (the key k) along the alphabet, wrapping from Z back to A. Letters are numbered A=0 … Z=25. Uppercase and lowercase are kept; spaces, numbers and punctuation stay the same.</p>
+        <p class="mono">Example (k = 3): <span class="green">HELLO → KHOOR</span></p>
+      </article>
+      <article class="card">
+        <h2 class="green">Formulas</h2>
+        <p class="mono">Encryption: <span class="green">E(x) = (x + k) mod 26</span></p>
+        <p class="mono">Decryption: <span class="green">D(x) = (x − k + 26) mod 26</span></p>
+        <p class="muted">x = letter position (0–25), k = shift key.</p>
+      </article>
+      <article class="card wide">
+        <h2 class="green">Limitations</h2>
+        <ul class="muted">
+          <li>Only 25 useful keys — brute force tries all of them in seconds.</li>
+          <li>Letter frequencies are preserved, so frequency analysis breaks it.</li>
+          <li>Each letter always maps to the same letter (monoalphabetic).</li>
+          <li>For learning only — never use it to protect real data.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
